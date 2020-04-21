@@ -1,16 +1,33 @@
 <template>
   <div>
-    <h3>当前最新的 count 值为:</h3>
-    <button>-1</button>
+    <h3>{{showNum}}</h3>
+    <button @click="btnHander1">-1</button>
+    <button @click="btnHander2">-N</button>
+    <button @click="subAsync">-1 async</button>
+    <button @click="subNAsync(5)">-N async</button>
   </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 
+export default {
+  data() {
+    return {}
+  },
+  methods: {
+    ...mapMutations(['sub', 'subN']),
+    ...mapActions(['subAsync', 'subNAsync']),
+    btnHander1() {
+      this.sub()
+    },
+    btnHander2() {
+      this.subN(3)
     }
+  },
+  computed: {
+    ...mapState(['count']),
+    ...mapGetters(['showNum'])
   }
 }
 </script>

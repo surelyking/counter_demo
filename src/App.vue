@@ -1,5 +1,8 @@
 <template>
   <div>
+    <p>
+      <h3 style="color:red">{{$store.getters.showNum}}</h3>
+    </p>
     <my-add></my-add>
 
     <p>------------</p>
